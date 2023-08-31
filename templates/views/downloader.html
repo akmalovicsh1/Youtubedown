@@ -1,0 +1,219 @@
+<link rel="stylesheet" href="../static/css/views/downloader.css">
+<script src="../static/js/views/downloader.js"></script>
+
+<div class="pt-2 px-2">
+    <div class="bg-dark input-group">
+        <label class="input-group-text" for="dwn-url-input">Video URL/ID</label>
+        <input type="text" class="form-control" placeholder="https://youtu.be/videoId" id="dwn-url-input">
+        <button class="btn btn-secondary" id="dwn-url-paste">Paste</button>
+        <button class="btn btn-primary" id="dwn-url-apply">Apply</button>
+    </div>
+</div>
+
+<div class="collapse">
+    <div id="messagebox">
+        <h5></h5>
+        <p></p>
+        <button class="btn btn-sm btn-warning">Dismiss</button>
+    </div>
+</div>
+
+<div class="collapse">
+    <div id="settings">
+        <h3 class="text-center mt-4">Welcome to the SWC YouTube Downloader</h3>
+        <hr>
+        <p class="ms-3">
+            Most of the supported websites of 'yt-dlp' are supported by this application. <br>
+            A list of supported websites can be found <a href="https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md" target="_blank">here</a>.
+        </p>
+        <hr>
+
+        <div class="container">
+            <h5 class="text-center">Preset Settings</h5>
+
+            <div>
+                <label for="pr-setting-mode">Default download format:</label>
+                <select class="form-select" id="pr-setting-mode">
+                    <option value="none">None</option>
+                    <option value="preset-max-audio">Auto - max audio</option>
+                    <option value="preset-max-video">Auto - max video</option>
+                    <option value="preset-max">Auto - max audio & video</option>
+                </select>
+            </div>
+
+            <div class="mt-2">
+                <label for="pr-setting-format">Default export format:</label>
+                <select class="form-select" id="pr-setting-format">
+                    <option value="none">None</option>
+                    <optgroup label="Video">
+                        <option value="mp4">MP4</option>
+                        <option value="webm">WebM</option>
+                        <option value="mov">MOV</option>
+                    </optgroup>
+                    <optgroup label="Audio">
+                        <option value="mp3">MP3</option>
+                        <option value="wav">WAV</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="mt-2">
+                <label for="pr-setting-folder">Default output folder:</label>
+                <div class="input-group">
+                    <input id="pr-setting-folder" class="form-control" type="text" placeholder="No path selected" disabled>
+                    <button class="btn btn-warning">Clear</button>
+                    <button class="btn btn-primary">Browse</button>
+                </div>
+            </div>
+
+            <div class="mt-2">
+                <label>Other options:</label>
+                <div class="d-flex flex-row ms-2">
+                    <div class="form-check me-5">
+                        <input id="pr-setting-metadata" class="form-check-input" type="checkbox">
+                        <label for="pr-setting-metadata" class="form-check-label">Song Mode</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input id="pr-setting-thumbnail" class="form-check-input" type="checkbox">
+                        <label for="pr-setting-thumbnail" class="form-check-label">Apply thumbnail</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="collapse">
+    <div id="loader" class="page-loader">
+        <div class="shadow"></div>
+        <div class="box"></div>
+        <div class="text">Loading video info</div>
+    </div>
+</div>
+
+<div class="collapse">
+    <div id="video-preview">
+        <div class="part">
+            <img id="video-thumbnail" src="" alt="">
+            <h4 id="video-title">Video title</h4>
+            <hr>
+            <div id="video-info">
+                Creator: &nbsp;&nbsp; <a href="#" id="video-creator"></a> <br>
+                Likes: &nbsp;&nbsp; <span id="video-likes"></span> <br>
+                Views: &nbsp;&nbsp; <span id="video-views"></span>
+            </div>
+        </div>
+        <div class="part">
+            <div id="video-description">video description</div>
+            <div id="video-categories"></div>
+            <hr>
+            <div id="format-selector">
+                <label for="format-selector-video">Select a download format:</label>
+                <select class="form-select" id="format-selector-video">
+                    <option disabled selected>Please select a video format</option>
+                    <optgroup label="Presets">
+                        <option value="preset-max-audio">Auto - max audio</option>
+                        <option value="preset-max-video">Auto - max video</option>
+                        <option value="preset-max">Auto - max audio & video</option>
+                    </optgroup>
+                    <optgroup label="All"></optgroup>
+                </select>
+                <p id="format-info" class="mt-1"></p>
+            </div>
+
+            <button id="video-preview-continue" class="btn btn-primary">Continue -></button>
+        </div>
+    </div>
+</div>
+
+<div class="collapse">
+    <div id="video-download">
+        <div class="input-group">
+            <label for="output-filetype-select" class="input-group-text solid-label-width">Output filetype</label>
+            <select class="form-select" id="output-filetype-select">
+                <option disabled selected>Please select an output filetype</option>
+                <optgroup label="Video">
+                    <option value="mp4">MP4</option>
+                    <option value="webm">WebM</option>
+                    <option value="mov">MOV</option>
+                </optgroup>
+                <optgroup label="Audio">
+                    <option value="mp3">MP3</option>
+                    <option value="wav">WAV</option>
+                </optgroup>
+            </select>
+        </div>
+        <div class="input-group mt-2">
+            <label for="output-location-selector" class="input-group-text solid-label-width">Output location</label>
+            <input id="output-location-selector" class="form-control" type="text" placeholder="No path selected" disabled>
+            <button class="btn btn-primary">Browse</button>
+        </div>
+
+        <div class="collapse expand-collapse">
+            <div id="download-options">
+                <div class="d-flex">
+                    <div class="w-50 pe-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="download-options-custom-filename">
+                            <label class="form-check-label" for="download-options-custom-filename">Custom Filename</label>
+                        </div>
+                        <div class="collapse">
+                            <input type="text" class="form-control" id="download-options-custom-filename-input" placeholder="Filename">
+                        </div>
+                    </div>
+                    <div  class="w-50 pe-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="download-options-songMode">
+                            <label class="form-check-label" for="download-options-songMode">Song Mode (Apply metadata to file)</label>
+                        </div>
+                        <div class="collapse">
+                            <input type="text" class="form-control" id="download-options-songMode-artist" placeholder="Artist">
+                            <input type="text" class="form-control" id="download-options-songMode-title" placeholder="Title">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="download-options-songMode-filename">
+                                <label class="form-check-label" for="download-options-songMode-filename">Affects filename</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="download-options-thumbnail">
+                    <label class="form-check-label" for="download-options-thumbnail">Apply Thumbnail</label>
+                </div>
+                <div class="collapse">
+                    <div class="d-flex">
+                        <img src="" id="download-options-thumbnail-preview" alt="">
+                        <div class="flex-grow-1">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="download-options-custom-thumbnail">
+                                <label class="form-check-label" for="download-options-custom-thumbnail">Custom Thumbnail</label>
+                            </div>
+                            <button class="btn btn-info" id="download-options-custom-thumbnail-input">Select image</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="download-options-back" class="btn btn-secondary"><- Back</button>
+                <button id="download-options-start" class="btn btn-primary">Download</button>
+            </div>
+        </div>
+        <div class="collapse expand-collapse">
+            <div id="download-progress">
+                <div id="download-progress-bar" class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="mb-5 mt-2" id="download-progress-info"></div>
+                <button class="btn btn-warning w-100" id="download-abort">Abort Download</button>
+            </div>
+            <div id="download-log">
+                <h5>Download Log</h5>
+                <ul class="list-unstyled"></ul>
+            </div>
+        </div>
+    </div>
+</div>

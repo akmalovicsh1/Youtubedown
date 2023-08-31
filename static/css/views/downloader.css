@@ -1,0 +1,229 @@
+#messagebox{
+    position: relative;
+    background-color: #850000;
+    margin: 1.5rem;
+    padding: 5px;
+    border-radius: .25rem;
+    border: solid 2px #ff0000;
+}
+#messagebox button{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+#settings{
+    height: 80vh;
+    background-color: #272b30;
+    margin: 1.5rem;
+    padding: 5px;
+    border-radius: .25rem;
+}
+#settings .form-select{
+    background: #171d23;
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: .25rem;
+}
+
+#video-preview{
+    position: relative;
+    height: 80vh;
+    background-color: #272b30;
+    margin: 1.5rem;
+    padding: 5px;
+    border-radius: .25rem;
+}
+#video-preview div.part{
+    width: 50%;
+    height: 100%;
+    padding: 5px;
+}
+#video-preview div.part:first-child{
+    float: left;
+}
+#video-preview div.part:last-child{
+    float: right;
+}
+
+#video-thumbnail{
+    width: 100%;
+    height: 60%;
+    background-color: #1a1c1f;
+    object-fit: cover;
+    border-radius: .25rem;
+}
+#video-title{
+    background-color: #1a1c1f;
+    padding: 8px;
+    font-weight: bold;
+    margin-top: 5px;
+    border-radius: .25rem;
+    user-select: text;
+}
+#video-info{
+    padding: 8px;
+    border-radius: .25rem;
+    background-color: #171d23;
+}
+#video-info a, #video-info span{
+    user-select: text;
+}
+#video-description{
+    padding: 8px;
+    border-radius: .25rem;
+    background-color: #171d23;
+    height: 50%;
+    overflow-y: auto;
+    user-select: text;
+}
+#video-description::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+#video-description::-webkit-scrollbar-track {
+    background: #171d23;
+    overflow: hidden;
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}
+#video-description::-webkit-scrollbar-thumb {
+    background: #323f4d;
+    border-radius: .25rem;
+}
+#video-description::-webkit-scrollbar-thumb:hover {
+    background: #3a4857;
+}
+#video-categories{
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: .25rem;
+    background-color: #171d23;
+    overflow-x: auto;
+}
+#video-categories::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+#video-categories::-webkit-scrollbar-track {
+    background: #171d23;
+    overflow: hidden;
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}
+#video-categories::-webkit-scrollbar-thumb {
+    background: #323f4d;
+    border-radius: .25rem;
+}
+#video-categories::-webkit-scrollbar-thumb:hover {
+    background: #3a4857;
+}
+#video-categories span{
+    display: inline;
+    margin: 0 2px;
+}
+#format-selector{
+    background: #171d23;
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: .25rem;
+}
+#video-preview-continue{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+#video-download{
+    position: relative;
+    height: 80vh;
+    margin: 1.5rem;
+    padding: 5px;
+}
+#video-download .solid-label-width{
+    display: inline;
+    width: 180px;
+    text-align: center;
+}
+.expand-collapse{
+    height: 100%;
+}
+#download-options{
+    position: relative;
+    border-radius: .25rem;
+    background-color: #272b30;
+    margin: 20px 10px 10px;
+    padding: 10px 15px;
+    height: 440px;
+}
+#download-options .form-control{
+    background: #171d23;
+}
+#download-options-thumbnail-preview{
+    width: 25%;
+    border-radius: .25rem;
+    object-fit: contain;
+    object-position: top center;
+    margin: 5px 10px 0;
+    height: 120px;
+}
+#download-options #download-options-back{
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+#download-options #download-options-start{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+#download-progress{
+    position: relative;
+    border-radius: .25rem;
+    background-color: #272b30;
+    margin: 20px 10px 10px;
+    padding: 10px 15px;
+}
+#download-log{
+    position: relative;
+    border-radius: .25rem;
+    background-color: #272b30;
+    margin: 20px 10px 10px;
+    padding: 10px 15px;
+    height: 190px;
+    user-select: text;
+}
+#download-log ul{
+    overflow: auto;
+    height: 140px;
+}
+#download-log ul li.info{
+    color: var(--bs-info);
+}
+#download-log ul li.warn{
+    color: var(--bs-warning);
+}
+#download-log ul li.err{
+    color: var(--bs-danger);
+}
+
+
+.attention{
+    outline: 0 solid var(--bs-info);
+    animation-name: attention;
+    animation-duration: .5s;
+    animation-iteration-count: 5;
+    animation-timing-function: ease-in-out;
+}
+@keyframes attention {
+    0% {
+        outline: 0 solid var(--bs-info);
+    }
+    50% {
+        outline: 5px solid var(--bs-info);
+    }
+    100% {
+        outline: 0 solid var(--bs-info);
+    }
+}
